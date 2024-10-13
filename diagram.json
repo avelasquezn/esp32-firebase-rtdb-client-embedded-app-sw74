@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "author": "Angel Velasquez",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-v1", "id": "esp", "top": 35.68, "left": 4.8, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -70.8,
+      "left": 128.6,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -70.8,
+      "left": 186.2,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 4.8,
+      "left": 181.85,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 4.8,
+      "left": 124.25,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 150.4,
+      "left": 255.2,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -75.3,
+      "left": -167.3,
+      "attrs": { "distance": "200" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "led1:A", "r2:1", "green", [ "v0" ] ],
+    [ "led2:A", "r1:1", "green", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "black", [ "v211.2", "h0.4" ] ],
+    [ "led2:C", "esp:GND.1", "black", [ "v211.2", "h0.4" ] ],
+    [ "r2:2", "esp:D4", "green", [ "h0", "v114" ] ],
+    [ "r1:2", "esp:D2", "green", [ "h0", "v123.6" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "lcd1:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "lcd1:SDA", "esp:D21", "orange", [ "h-19.2", "v-105.4" ] ],
+    [ "lcd1:SCL", "esp:D22", "purple", [ "h-28.8", "v-143.7" ] ],
+    [ "ultrasonic1:GND", "esp:GND.2", "black", [ "v163.2", "h8.4" ] ],
+    [ "ultrasonic1:VCC", "esp:VIN", "red", [ "v172.8", "h105.6" ] ],
+    [ "ultrasonic1:ECHO", "esp:D18", "orange", [ "v96", "h8.8" ] ],
+    [ "ultrasonic1:TRIG", "esp:D5", "purple", [ "v105.6", "h-0.4" ] ]
+  ],
+  "dependencies": {}
+}
